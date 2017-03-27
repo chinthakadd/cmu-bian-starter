@@ -1,7 +1,11 @@
 package edu.cmu.bian.controller;
 
 import edu.cmu.bian.model.Account;
+import edu.cmu.bian.model.Party;
 import edu.cmu.bian.model.PartyResponse;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -34,6 +38,15 @@ public class AccountController {
 
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("lName", lastName);
+/*
+        Map<String, Object> headers = new HashMap<>();
+        headers.put("auth", "value");
+        HttpEntity httpEntity = new HttpEntity(headers);
+
+        ResponseEntity<PartyResponse> partyResponseEntity =
+                restTemplate.exchange(url, HttpMethod.GET, httpEntity, PartyResponse.class, paramMap);
+        PartyResponse partyResponse = partyResponseEntity.getBody();
+  */
 
         PartyResponse partyResponse = restTemplate.getForObject(url, PartyResponse.class, paramMap);
         System.out.println("party response:" + partyResponse);

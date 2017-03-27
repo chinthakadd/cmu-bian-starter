@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cmu-bian-starter.iml" filepath="$PROJECT_DIR$/.idea/modules/cmu-bian-starter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cmu-bian-starter_main.iml" filepath="$PROJECT_DIR$/.idea/modules/cmu-bian-starter_main.iml" group="cmu-bian-starter" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cmu-bian-starter_test.iml" filepath="$PROJECT_DIR$/.idea/modules/cmu-bian-starter_test.iml" group="cmu-bian-starter" />
+    </modules>
+  </component>
+</project>
