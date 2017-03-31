@@ -52,7 +52,7 @@ public class Application {
                 "Smart APIs for Smarter Banking",
                 "V2.0",
                 "Terms of service",
-                "pwelagedara@virtusapolaris.com",
+                "cmu_pnc_bian",
                 "Virtusa|Polaris",
                 "http://www.virtusapolaris.com");
         return apiInfo;
