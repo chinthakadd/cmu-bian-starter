@@ -3,53 +3,34 @@ package edu.cmu.bian.model.PmtAddRq;
 /**
  * Created by chaitanyakvk on 3/27/2017.
  */
-public class CardLogicalData {
+public class CustId {
 
-    private String cardEmbossNum;
-    private String brand;
-    private String expDt;
-    private String name;
+    private CardLogicalData cardLogicalData;
+    private String custLoginId;
 
-    public CardLogicalData() {
+    public CustId() {
 
     }
 
-    public CardLogicalData(String cardEmbossNum, String brand, String expDt, String name) {
-        this.cardEmbossNum = cardEmbossNum;
-        this.brand = brand;
-        this.expDt = expDt;
-        this.name = name;
+    public CustId(CardLogicalData cardLogicalData, String custLoginId) {
+        this.cardLogicalData = cardLogicalData;
+        this.custLoginId = custLoginId;
     }
 
-    public String getCardEmbossNum() {
-        return cardEmbossNum;
+    public CardLogicalData getCardLogicalData() {
+        return cardLogicalData;
     }
 
-    public void setCardEmbossNum(String cardEmbossNum) {
-        this.cardEmbossNum = cardEmbossNum;
+    public void setCardLogicalData(CardLogicalData cardLogicalData) {
+        this.cardLogicalData = cardLogicalData;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getCustLoginId() {
+        return custLoginId;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getExpDt() {
-        return expDt;
-    }
-
-    public void setExpDt(String expDt) {
-        this.expDt = expDt;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setCustLoginId(String custLoginId) {
+        this.custLoginId = custLoginId;
     }
 }
+

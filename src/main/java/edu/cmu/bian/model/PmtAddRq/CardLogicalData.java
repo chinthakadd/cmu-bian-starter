@@ -5,57 +5,44 @@ package edu.cmu.bian.model.PmtAddRq;
  */
 public class CardLogicalData {
 
-    private String bankIdType;
-    private String bankId;
+    private String cardEmbossNum;
+    private String brand;
+    private String expDt;
     private String name;
-    private String branchId;
-    private String branchName;
-
 
     public CardLogicalData() {
 
     }
 
-    public CardLogicalData(String bankIdType, String bankId, String name, String branchId, String branchName) {
-
-        this.bankIdType = bankIdType;
-        this.bankId = bankId;
-        this.branchId = branchId;
-        this.branchName = branchName;
+    public CardLogicalData(String cardEmbossNum, String brand, String expDt, String name) {
+        this.cardEmbossNum = cardEmbossNum;
+        this.brand = brand;
+        this.expDt = expDt;
         this.name = name;
     }
 
-
-    public String getBankIdType() {
-        return bankIdType;
+    public String getCardEmbossNum() {
+        return cardEmbossNum;
     }
 
-    public void setBankIdType(String bankIdType) {
-        this.bankIdType = bankIdType;
+    public void setCardEmbossNum(String cardEmbossNum) {
+        this.cardEmbossNum = cardEmbossNum;
     }
 
-    public String getBankId() {
-        return bankId;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setBankId(String bankId) {
-        this.bankId = bankId;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
-    public String getBranchId() {
-        return branchId;
+    public String getExpDt() {
+        return expDt;
     }
 
-    public void setBranchId(String branchId) {
-        this.branchId = branchId;
-    }
-
-    public String getBranchName() {
-        return branchName;
-    }
-
-    public void setBranchName(String branchName) {
-        this.branchName = branchName;
+    public void setExpDt(String expDt) {
+        this.expDt = expDt;
     }
 
     public String getName() {

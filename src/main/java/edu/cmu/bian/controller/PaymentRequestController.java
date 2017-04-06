@@ -1,9 +1,6 @@
 package edu.cmu.bian.controller;
 
-import edu.cmu.bian.model.Account;
-import edu.cmu.bian.model.CompositeObject;
-import edu.cmu.bian.model.PartyResponse;
-import edu.cmu.bian.model.PaymentModel;
+import edu.cmu.bian.model.PmtAddRq.*;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -12,60 +9,65 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import javax.net.ssl.HttpsURLConnection;
 import java.util.HashMap;
 import java.util.Map;
 
 
 @RestController
-public class PaymentController {
+public class PaymentRequestController {
 
-    @PostMapping("/hello2/{name}")
-    public String helloWorld(@PathVariable("name") String name, @RequestParam("size") int height, @RequestBody PaymentModel paymentModel, @RequestHeader("someHeader") int someHeader) {
-        return "this is the path param " + name + " and this is a query param " + height + " " + paymentModel.getPayeeAccountNumber() + " " + someHeader ;
-    }
+    @PostMapping("/pmtAddRq")
+    public PmtAddRq paymentAddRequest(@RequestBody PmtAddRqInput pmtAddRqInput) {
 
-    @PostMapping("/hello3/{name}")
-    public PaymentModel helloWorld2(@PathVariable("name") String name, @RequestParam("size") int height, @RequestBody PaymentModel paymentModel, @RequestHeader("someHeader") int someHeader) {
-        return paymentModel;
-    }
-
-    @PostMapping("/hello4/{name}")
-    public CompositeObject helloWorld3(@PathVariable("name") String name, @RequestParam("size") int height, @RequestBody CompositeObject compositeObject, @RequestHeader("someHeader") int someHeader) {
-        return compositeObject;
-    }
-
-
-    @GetMapping("/card/{cardNumber}")
-    public String getCardData(@PathVariable String cardNumber) {
+        PmtAddRq pmtAddRqResponse = new PmtAddRq();
+        PayerInfo payerInfo = new PayerInfo();
+        CurAmt curAmt = new CurAmt();
+        BankInfo bankInfo = new BankInfo();
+        RemitInfo remitInfo = new RemitInfo();
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://apimanager.pncapix.com:8280/smartbank-card/1.0.0/1.0.0/card/{cardNumber}";
- //    HttpsURLConnection.setDefaultHostnameVerifier ((hostname, session) -> true);
+        DepAcctIdFrom depAcctIdFrom = new DepAcctIdFrom();
+        CustId custId = new CustId();
+        PmtInfo pmtInfo = new PmtInfo();
+        CardLogicalData cardLogicalData = new CardLogicalData();
+        String url = "http://apimanager.pncapix.com:8280/SmartBank-API-Services/V2.0/card/findByCardNumber/{cardNumber}";
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("cardNumber", 1);
-
+        paramMap.put("cardNumber", pmtAddRqInput.getCardEmbossNum());
         MultiValueMap<String, Object> headers = new LinkedMultiValueMap<>();
-
         headers.add("Accept", "application/json");
-        headers.add("Authorization", "Bearer ce0fe2cf-2dc0-3e96-b489-5806070265a0");
-//        headers.put("cache-control", "no-cache");
-//        headers.put("postman-token", "1b31b01a-9c73-4d47-092b-9940c9e0da98");
-
+        headers.add("Authorization", "Bearer 16cd1907-6dfd-33ab-b196-9d8419333f3d");
         HttpEntity httpEntity = new HttpEntity(headers);
+        ResponseEntity<CardResponse[]> cardResponseEntity =
+                restTemplate.exchange(url, HttpMethod.GET, httpEntity, CardResponse[].class, paramMap);
+        CardResponse[] cardResponse = cardResponseEntity.getBody();
 
-        ResponseEntity<String> partyResponseEntity =
-                restTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class, paramMap);
-        String partyResponse = partyResponseEntity.getBody();
-
-
-
-//        PartyResponse partyResponse = restTemplate.getForObject(url, PartyResponse.class, paramMap);
-//        System.out.println("party response:" + partyResponse);
-//
-//        long partyId = partyResponse.getContent().get(0).getPartyId();
-//        System.out.println("Party ID: " + partyId);
-
-        System.out.println("partyResponse: " + partyResponse);
-        return partyResponse;
+        curAmt.setAmt(pmtAddRqInput.getAmt());
+        curAmt.setCurCode(pmtAddRqInput.getCurCode());
+        remitInfo.setCurAmt(curAmt);
+        bankInfo.setBankId(pmtAddRqInput.getBankId());
+        bankInfo.setBankIdType(pmtAddRqInput.getBankIdType());
+        bankInfo.setBranchId(pmtAddRqInput.getBranchId());
+        bankInfo.setBranchName(pmtAddRqInput.getBranchName());
+        bankInfo.setName(pmtAddRqInput.getBankName());
+        depAcctIdFrom.setAcctCur(pmtAddRqInput.getPayeeAcctCur());
+        depAcctIdFrom.setAcctType(pmtAddRqInput.getPayeeAcctType());
+        depAcctIdFrom.setBankInfo(bankInfo);
+        depAcctIdFrom.setAcctId(pmtAddRqInput.getPayeeAcctId());
+        payerInfo.setPayerAcctId(cardResponse[0].getAccount().getAccountId());
+        pmtInfo.setDepAcctIdFrom(depAcctIdFrom);
+        pmtInfo.setPayerInfo(payerInfo);
+        pmtInfo.setRemitInfo(remitInfo);
+        pmtInfo.setDueDt(pmtAddRqInput.getDueDt());
+        pmtInfo.setPrcDt(pmtAddRqInput.getPrcDt());
+        cardLogicalData.setBrand(cardResponse[0].getGateway());
+        cardLogicalData.setCardEmbossNum(pmtAddRqInput.getCardEmbossNum());
+        cardLogicalData.setExpDt(pmtAddRqInput.getExpDt());
+        cardLogicalData.setName(pmtAddRqInput.getCardEmbossName());
+        custId.setCardLogicalData(cardLogicalData);
+        custId.setCustLoginId(cardResponse[0].getPartyId()); // need to change this to Cust Login ID
+        pmtAddRqResponse.setPmtInfo(pmtInfo);
+        pmtAddRqResponse.setCustId(custId);
+        pmtAddRqResponse.setRqUID(pmtAddRqInput.getRqUID());
+        return pmtAddRqResponse;
     }
+
 }

@@ -48,13 +48,13 @@ public class Application {
 
     private ApiInfo apiInfo() {
         ApiInfo apiInfo = new ApiInfo(
-                "SmartBank API Services",
-                "Smart APIs for Smarter Banking",
-                "V2.0",
+                "PSD2 - Payment Execution API",
+                "API to execute payments as per IFX standard",
+                "V1.0",
                 "Terms of service",
-                "cmu_pnc_bian",
-                "Virtusa|Polaris",
-                "http://www.virtusapolaris.com");
+                "Carnegie Mellon University - Heinz College",
+                "CMU",
+                "http://www.heinz.cmu.edu");
         return apiInfo;
     }
 }

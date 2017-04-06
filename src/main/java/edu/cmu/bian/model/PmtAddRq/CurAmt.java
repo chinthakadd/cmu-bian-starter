@@ -3,66 +3,35 @@ package edu.cmu.bian.model.PmtAddRq;
 /**
  * Created by chaitanyakvk on 3/27/2017.
  */
-public class BankInfo {
+public class CurAmt {
 
-    private String bankIdType;
-    private String bankId;
-    private String name;
-    private String branchId;
-    private String branchName;
+    private String curCode;
+    private double amt;
 
-
-    public BankInfo() {
+    public CurAmt() {
 
     }
 
-    public BankInfo(String bankIdType, String bankId, String name, String branchId, String branchName) {
+    public CurAmt(String curCode, double amt) {
 
-        this.bankIdType = bankIdType;
-        this.bankId = bankId;
-        this.branchId = branchId;
-        this.branchName = branchName;
-        this.name = name;
+        this.curCode = curCode;
+        this.amt = amt;
+
     }
 
-
-    public String getBankIdType() {
-        return bankIdType;
+    public String getCurCode() {
+        return curCode;
     }
 
-    public void setBankIdType(String bankIdType) {
-        this.bankIdType = bankIdType;
+    public void setCurCode(String curCode) {
+        this.curCode = curCode;
     }
 
-    public String getBankId() {
-        return bankId;
+    public double getAmt() {
+        return amt;
     }
 
-    public void setBankId(String bankId) {
-        this.bankId = bankId;
-    }
-
-    public String getBranchId() {
-        return branchId;
-    }
-
-    public void setBranchId(String branchId) {
-        this.branchId = branchId;
-    }
-
-    public String getBranchName() {
-        return branchName;
-    }
-
-    public void setBranchName(String branchName) {
-        this.branchName = branchName;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setAmt(double amt) {
+        this.amt = amt;
     }
 }

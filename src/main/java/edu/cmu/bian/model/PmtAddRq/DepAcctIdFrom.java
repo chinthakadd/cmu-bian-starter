@@ -1,36 +1,55 @@
-package edu.cmu.bian.model;
+package edu.cmu.bian.model.PmtAddRq;
 
 /**
  * Created by chaitanyakvk on 3/27/2017.
  */
-public class CompositeObject {
+public class DepAcctIdFrom {
 
-    private ChildObject child;
+    private BankInfo bankInfo;
+    private String acctId;
+    private String acctType;
+    private String acctCur;
 
-    private String name;
-
-    public CompositeObject(){
+    public DepAcctIdFrom(){
 
     }
 
-    public CompositeObject(ChildObject child, String name){
-        this.child = child;
-        this.name = name;
+    public DepAcctIdFrom(BankInfo bankInfo, String acctId, String acctType, String acctCur){
+        this.bankInfo = bankInfo;
+        this.acctId = acctId;
+        this.acctType = acctType;
+        this.acctCur = acctCur;
     }
 
-    public ChildObject getChild() {
-        return child;
+    public BankInfo getBankInfo() {
+        return bankInfo;
     }
 
-    public void setChild(ChildObject child) {
-        this.child = child;
+    public void setBankInfo(BankInfo bankInfo) {
+        this.bankInfo = bankInfo;
     }
 
-    public String getName() {
-        return name;
+    public String getAcctId() {
+        return acctId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAcctId(String acctId) {
+        this.acctId = acctId;
+    }
+
+    public String getAcctType() {
+        return acctType;
+    }
+
+    public void setAcctType(String acctType) {
+        this.acctType = acctType;
+    }
+
+    public String getAcctCur() {
+        return acctCur;
+    }
+
+    public void setAcctCur(String acctCur) {
+        this.acctCur = acctCur;
     }
 }

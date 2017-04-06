@@ -1,27 +1,26 @@
-package edu.cmu.bian.model;
+package edu.cmu.bian.model.PmtAddRq;
 
 /**
  * Created by chaitanyakvk on 3/27/2017.
  */
-public class ChildObject {
+public class PayerInfo {
 
-    private String name;
+    private String payerAcctId;
 
-    public ChildObject() {
+    public PayerInfo() {
 
     }
 
-    public ChildObject(String name) {
+    public PayerInfo(String payerAcctId) {
 
-        this.name = name+name;
+        this.payerAcctId = payerAcctId;
     }
 
-
-    public String getName() {
-        return name+name;
+    public String getPayerAcctId() {
+        return payerAcctId;
     }
 
-    public void setName(String name) {
-        this.name = name+name;
+    public void setPayerAcctId(String payerAcctId) {
+        this.payerAcctId = payerAcctId;
     }
 }
