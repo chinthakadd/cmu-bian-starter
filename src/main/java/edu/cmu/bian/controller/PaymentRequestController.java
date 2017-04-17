@@ -29,6 +29,8 @@ public class PaymentRequestController {
         CustId custId = new CustId();
         PmtInfo pmtInfo = new PmtInfo();
         CardLogicalData cardLogicalData = new CardLogicalData();
+
+
         String url = "http://apimanager.pncapix.com:8280/SmartBank-API-Services/V2.0/card/findByCardNumber/{cardNumber}";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("cardNumber", pmtAddRqInput.getCardEmbossNum());
