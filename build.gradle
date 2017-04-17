@@ -13,6 +13,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -29,3 +30,8 @@ dependencies {
 	compile("io.springfox:springfox-swagger-ui:2.0.2")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+war {
+	archiveName = "${project.name}.war"
+}
+
