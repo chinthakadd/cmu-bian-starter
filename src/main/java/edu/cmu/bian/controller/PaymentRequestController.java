@@ -16,7 +16,7 @@ import java.util.Map;
 @RestController
 public class PaymentRequestController {
 
-    @PostMapping("/pmtAddRq")
+    @PutMapping("/pmtAddRq")
     public PmtAddRq paymentAddRequest(@RequestBody PmtAddRqInput pmtAddRqInput) {
 
         PmtAddRq pmtAddRqResponse = new PmtAddRq();
