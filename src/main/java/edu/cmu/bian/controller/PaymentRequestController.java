@@ -39,7 +39,7 @@ public class PaymentRequestController {
         CardLogicalData cardLogicalData = new CardLogicalData();
 
         //Code to access the PNC API Exchange to retrieve details based on Card Number
-        String url = "http://apimanager.pncapix.com:8280/SmartBank-API-Services/V2.0/card/findByCardNumber/{cardNumber}";
+        String url = "http://azureapimanager.pncapix.com:8280/SmartBankAPIServices/V2.0/card/findByCardNumber/{cardNumber}";
         //Map to store the Parameters that are to be passed
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("cardNumber", pmtAddRqInput.getCardEmbossNum());
@@ -47,7 +47,7 @@ public class PaymentRequestController {
         //Map to store the headers required for the API Access
         MultiValueMap<String, Object> headers = new LinkedMultiValueMap<>();
         headers.add("Accept", "application/json");
-        headers.add("Authorization", "Bearer 16cd1907-6dfd-33ab-b196-9d8419333f3d");
+        headers.add("Authorization", "Bearer abd3e694-8f10-3f8a-9cec-90ea0e3bc96e");
         HttpEntity httpEntity = new HttpEntity(headers);
 
         // Sending the request to the PNC API Exchange

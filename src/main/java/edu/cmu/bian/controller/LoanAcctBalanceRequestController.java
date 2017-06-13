@@ -47,7 +47,7 @@ public class LoanAcctBalanceRequestController {
         LoanAcctBalInqRs loanAcctBalInqRs = new LoanAcctBalInqRs();
 
         //Code to access the PNC API Exchange to retrieve details based on Loan Account Number
-        String accounturl = "http://apimanager.pncapix.com:8280/smartbank-loan/1.0.0/loan/findByAccountId/{accountId}";
+        String accounturl = "http://azureapimanager.pncapix.com:8280/SmartBank-Loan-Services/v1.0.0/loan/findByAccountId/{accountId}";
 
         //Map to store the Parameters that are to be passed
         Map<String, Object> accountparamMap = new HashMap<>();
@@ -56,7 +56,7 @@ public class LoanAcctBalanceRequestController {
         //Map to store the headers required for the API Access
         MultiValueMap<String, Object> accountheaders = new LinkedMultiValueMap<>();
         accountheaders.add("Accept", "application/json");
-        accountheaders.add("Authorization", "Bearer 4efe4573-3ed8-3c18-847a-b043869f1a45");
+        accountheaders.add("Authorization", "Bearer abd3e694-8f10-3f8a-9cec-90ea0e3bc96e");
         HttpEntity accounthttpEntity = new HttpEntity(accountheaders);
 
         // Sending the request to the PNC API Exchange
